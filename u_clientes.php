@@ -45,7 +45,7 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE customers  set name = ?, email = ?, mobile =? WHERE id = ?";
+            $sql = "UPDATE clientes  set nombre = ?, email = ?, telefono =? WHERE id_cliente = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($name,$email,$mobile,$id));
             Database::disconnect();
@@ -54,13 +54,13 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM customers where id = ?";
+        $sql = "SELECT * FROM clientes where id_cliente = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        $name = $data['name'];
+        $name = $data['nombre'];
         $email = $data['email'];
-        $mobile = $data['mobile'];
+        $mobile = $data['telefono'];
         Database::disconnect();
     }
 ?>
@@ -77,7 +77,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Update a Customer</h3>
+                        <h3>Actualizar cliente</h3>
                     </div>
              
                     <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">

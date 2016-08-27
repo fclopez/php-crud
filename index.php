@@ -9,45 +9,16 @@
 <body>
     <div class="container">
             <div class="row">
-                <h3>Comercial PATOMAR</h3>
+                <h2>Comercial PATOMAR</h2>
             </div>
-            <div class="row">
-              <p>
-                 <a href="create.php" class="btn btn-success">Crear</a>
-                </p>
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Email</th>
-                      <th>Numero Celular</th>
-                      <th>Accion</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                   include 'database.php';
-                   $pdo = Database::connect();
-                   $sql = 'SELECT * FROM clientes ORDER BY id DESC';
-                   foreach ($pdo->query($sql) as $row) {
-                            echo '<tr>';
-                            echo '<td>'. $row['nombre'] . '</td>';
-                            echo '<td>'. $row['email'] . '</td>';
-                            echo '<td>'. $row['telefono'] . '</td>';
-                            echo '<td width=250>';
-                            echo '<a class="btn" href="read.php?id='.$row['id'].'">Leer</a>';
-                            echo ' ';
-                            echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
-                            echo ' ';
-                            echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
-                            
-                            echo '</tr>';
-                   }
-                   Database::disconnect();
-                  ?>
-                  </tbody>
-            </table>
-        </div>
+        <p>
+        <a href="r_vendedores.php" class="btn btn-success">Ver Vendedores</a>
+        <a href="r_clientes.php" class="btn btn-success">Ver Clientes</a>
+        </p>
+        <p>
+        <a href="r_productos.php" class="btn btn-success">Ver Productos</a>
+        <a href="r_facturas.php" class="btn btn-success">Ver Facturas</a>
+        </p>
     </div> <!-- /container -->
   </body>
 </html>
