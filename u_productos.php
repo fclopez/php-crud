@@ -2,8 +2,8 @@
     require 'database.php';
  
     $id = null;
-    if ( !empty($_GET['id_vededor'])) {
-        $id = $_REQUEST['id_vededor'];
+    if ( !empty($_GET['id'])) {
+        $id = $_REQUEST['id'];
     }
      
     if ( null==$id ) {
@@ -17,20 +17,19 @@
         $mobileError = null;
          
         // keep track post values
-        $name = $_POST['p_nombre'];
-        $name = $_POST['p_apellido'];
+        $name = $_POST['name'];
         $email = $_POST['email'];
-        $mobile = $_POST['telefono'];
+        $mobile = $_POST['mobile'];
          
         // validate input
         $valid = true;
         if (empty($name)) {
-            $nameError = 'Ingresa un nombre';
+            $nameError = 'Please enter Name';
             $valid = false;
         }
          
         if (empty($email)) {
-            $emailError = 'Ingresa un email';
+            $emailError = 'Please enter Email Address';
             $valid = false;
         } else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
             $emailError = 'Please enter a valid Email Address';
@@ -46,7 +45,7 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE customers  set name = ?, email = ?, mobile =? WHERE id = ?";
+            $sql = "UPDATE clientes  set nombre = ?, email = ?, telefono =? WHERE id_cliente = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($name,$email,$mobile,$id));
             Database::disconnect();
@@ -55,13 +54,13 @@
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM customers where id = ?";
+        $sql = "SELECT * FROM clientes where id_cliente = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
-        $name = $data['name'];
+        $name = $data['nombre'];
         $email = $data['email'];
-        $mobile = $data['mobile'];
+        $mobile = $data['telefono'];
         Database::disconnect();
     }
 ?>
@@ -78,7 +77,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Update a Customer</h3>
+                        <h3>Actualizar Productos</h3>
                     </div>
              
                     <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
@@ -110,8 +109,8 @@
                         </div>
                       </div>
                       <div class="form-actions">
-                          <button type="submit" class="btn btn-success">Update</button>
-                          <a class="btn" href="index.php">Back</a>
+                          <button type="submit" class="btn btn-success">Actualizar</button>
+                          <a class="btn" href="r_productos.php">Atras</a>
                         </div>
                     </form>
                 </div>

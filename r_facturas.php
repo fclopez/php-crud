@@ -36,12 +36,9 @@
                             echo '<td>'. $row['fecha_entrega'] . '</td>';
                             echo '<td>'. $row['tipo_envio'] . '</td>';
                             echo '<td>'. $row['nombre'] . '</td>';
-                            echo '<td width=250>';
+                            echo '<td width=100>';
                             echo ' ';
-                            echo '<a class="btn btn-success" href="update.php?id='.$row['id_cliente'].'">Actualizar</a>';
-                            echo ' ';
-                            echo '<a class="btn btn-danger" href="delete.php?id='.$row['id_cliente'].'">Borrar</a>';
-                            
+                            echo '<a class="btn" href="update.php?id='.$row['id_cliente'].'">Visualizar</a>';                          
                             echo '</tr>';
                    }
                    Database::disconnect();

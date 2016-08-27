@@ -48,7 +48,7 @@
             </table>
         </div>
         <p>
-                <a href="c_clientes.php" class="btn btn-success">Crear producto</a>
+                <a href="c_productos.php" class="btn btn-success">Crear producto</a>
         <a class="btn" href="index.php">Regresar</a>
         </p>
     </div> <!-- /container -->

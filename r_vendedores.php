@@ -52,7 +52,7 @@
             </table>
         </div>
         <p>
-                <a href="c_clientes.php" class="btn btn-success">Crear vendedor</a>
+        <a href="c_vendedores.php" class="btn btn-success">Crear vendedor</a>
         <a class="btn" href="index.php">Regresar</a>
         </p>
     </div> <!-- /container -->
