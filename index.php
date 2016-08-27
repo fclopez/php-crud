@@ -28,12 +28,12 @@
                   <?php
                    include 'database.php';
                    $pdo = Database::connect();
-                   $sql = 'SELECT * FROM customers ORDER BY id DESC';
+                   $sql = 'SELECT * FROM clientes ORDER BY id DESC';
                    foreach ($pdo->query($sql) as $row) {
                             echo '<tr>';
-                            echo '<td>'. $row['name'] . '</td>';
+                            echo '<td>'. $row['nombre'] . '</td>';
                             echo '<td>'. $row['email'] . '</td>';
-                            echo '<td>'. $row['mobile'] . '</td>';
+                            echo '<td>'. $row['telefono'] . '</td>';
                             echo '<td width=250>';
                             echo '<a class="btn" href="read.php?id='.$row['id'].'">Leer</a>';
                             echo ' ';
